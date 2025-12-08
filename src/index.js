@@ -1,3 +1,4 @@
-const { add, calculateSum } = require('./core');
+const { passwordInWordList } = require('./core');
 
-module.exports = { add, calculateSum };
+module.exports = { passwordInWordList };
+

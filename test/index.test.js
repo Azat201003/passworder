@@ -1,46 +1,36 @@
-const { add } = require('../src/index');
-const { calculateSum } = require('../src/core');
+const pw = require('../src/index');
 
-function testAdd() {
-  console.log('Testing add function...');
-  
-  if (add(2, 3) !== 5) {
-    throw new Error('add(2, 3) should return 5');
-  }
-  
-  if (add(-1, 1) !== 0) {
-    throw new Error('add(-1, 1) should return 0');
-  }
-  
-  if (add(0, 0) !== 0) {
-    throw new Error('add(0, 0) should return 0');
-  }
-  
-  console.log('✓ add function tests passed');
+function testPasswordInWordList() {
+    data = [
+        'password',  'princess',  '123456',    'sunshine',
+        'princess1', 'abc123',    'jordan23',  'blessed1',
+        'Password1', 'password1', 'jasmine1',  'blink182',
+        'sunshine1', 'happy123',  'butterfly', 'whatever',
+    ];
+    data.forEach((password) => {
+        if (!pw.passwordInWordList(password)) {
+            throw new Error('Password \'' + password + '\'from wordlist marked as not in wordlist');
+        }
+    })
 }
-
-function testCalculateSum() {
-  console.log('Testing calculateSum function...');
-  
-  if (calculateSum([1, 2, 3, 4]) !== 10) {
-    throw new Error('calculateSum([1, 2, 3, 4]) should return 10');
-  }
-  
-  if (calculateSum([5, -2, 1]) !== 4) {
-    throw new Error('calculateSum([5, -2, 1]) should return 4');
-  }
-  
-  if (calculateSum([]) !== 0) {
-    throw new Error('calculateSum([]) should return 0');
-  }
-  
-  console.log('✓ calculateSum function tests passed');
+function testPasswordNotInWordList() {
+    data = [
+        'superMegaPassword1234',
+        'unhackable_passwOrd',
+        'ThEBesTP@sSWorD',
+        'IDontKnowWhichPasswordCanIChoose',
+    ];
+    data.forEach((password) => {
+        if (pw.passwordInWordList(password)) {
+            throw new Error('Password \'' + password + '\' not from wordlist marked as in wordlist');
+        }
+    })
 }
 
 function runTests() {
   try {
-    testAdd();
-    testCalculateSum();
+    testPasswordInWordList();
+    testPasswordNotInWordList();
     console.log('All tests passed! ✓');
   } catch (error) {
     console.error('Test failed:', error.message);
@@ -52,4 +42,3 @@ if (require.main === module) {
   runTests();
 }
 
-module.exports = { testAdd, testCalculateSum, runTests };

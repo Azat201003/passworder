@@ -1,9 +1,8 @@
-function add(a, b) {
-  return a + b;
+const { parseWordList } = require('./wordlist');
+
+function passwordInWordList(password) {
+    return parseWordList().includes(password);
 }
 
-function calculateSum(numbers) {
-  return numbers.reduce((sum, num) => add(sum, num), 0);
-}
+module.exports = { passwordInWordList };
 
-module.exports = { add, calculateSum };

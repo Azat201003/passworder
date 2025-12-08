@@ -1,7 +1,7 @@
 {
-  "name": "simple-add-lib",
+  "name": "passworder",
   "version": "1.0.0",
-  "description": "A simple JavaScript library for number addition",
+  "description": "A simple JavaScript library for password checking",
   "main": "src/index.js",
   "directories": {
     "test": "test"
@@ -9,8 +9,8 @@
   "scripts": {
     "test": "node test/index.test.js"
   },
-  "keywords": ["addition", "math", "library"],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["password"],
+  "author": "Azat201003",
+  "license": "GPL-3.0",
   "type": "commonjs"
 }
