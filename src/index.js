@@ -1,4 +1,4 @@
-const { passwordInWordList } = require('./core');
+const { passwordInWordList, countPermutations } = require('./core');
 
-module.exports = { passwordInWordList };
+module.exports = { passwordInWordList, countPermutations };
 
