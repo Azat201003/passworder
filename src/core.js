@@ -44,15 +44,6 @@ function generateNeighbors(pw) {
         const newPw = pw.slice(0, i) + pw.slice(i + 1);
         neighbors.push(newPw);
     }
-    // Switch (swap) two characters
-    for (let i = 0; i < pw.length; i++) {
-        for (let j = i + 1; j < pw.length; j++) {
-            const arr = pw.split('');
-            [arr[i], arr[j]] = [arr[j], arr[i]];
-            const newPw = arr.join('');
-            neighbors.push(newPw);
-        }
-    }
     return neighbors;
 }
 
