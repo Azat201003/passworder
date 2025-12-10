@@ -1,4 +1,6 @@
-const { passwordInWordList, countPermutations } = require('./core');
+// Import functions from the core module
+const { passwordInWordList, countPermutations, passwordSuggestions } = require('./core');
 
-module.exports = { passwordInWordList, countPermutations };
+// Export the functions for external use
+module.exports = { passwordInWordList, countPermutations, passwordSuggestions };
 
