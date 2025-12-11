@@ -28,23 +28,40 @@ function countPermutations(password) {
     return total;
 }
 
+function shuffleArray(array) {
+    let currentIndex = array.length, randomIndex;
+
+    // While there remain elements to shuffle.
+    while (currentIndex !== 0) {
+
+        // Pick a remaining element.
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        // Swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+    }
+
+    return array;
+}
+
 // Generates modified versions of the password
-function generateNeighbors(pw) {
+function generateNeighbors(password) {
     const neighbors = [];
     const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?';
     // Add a character in any position
-    for (let i = 0; i <= pw.length; i++) {
+    for (let i = 0; i <= password.length; i++) {
         for (const c of chars) {
-            const newPw = pw.slice(0, i) + c + pw.slice(i);
-            neighbors.push(newPw);
+            const newPassword = password.slice(0, i) + c + password.slice(i);
+            neighbors.push(newPassword);
         }
     }
     // Delete a character
-    for (let i = 0; i < pw.length; i++) {
-        const newPw = pw.slice(0, i) + pw.slice(i + 1);
-        neighbors.push(newPw);
+    for (let i = 0; i < password.length; i++) {
+        const newPassword = password.slice(0, i) + password.slice(i + 1);
+        neighbors.push(newPassword);
     }
-    return neighbors;
+    return shuffleArray(neighbors);
 }
 
 // Generates stronger password suggestions using BFS
@@ -62,7 +79,7 @@ function passwordSuggestions(password) {
                 visited.add(neighbor);
                 if (!wordlist.includes(neighbor) && countPermutations(neighbor) > originalStrength) {
                     suggestions.push(neighbor);
-                    if (suggestions.length >= 10) break;
+                    if (suggestions.length >= 12) break;
                 }
                 queue.push(neighbor);
             }
